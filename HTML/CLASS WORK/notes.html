@@ -1,0 +1,142 @@
+ HTML:-
+
+HTML (HyperText Markup Language) is like the skeleton of a webpage.
+
+It tells the browser what content is there (headings, paragraphs, images, links) but not how it looks.
+
+Think of it as the structure of your house before you paint or decorate it.
+
+ HTML Tags:-
+
+Tags are keywords inside < > used to define elements.
+
+They usually come in pairs:
+
+<p> </p> → paragraph
+
+<h1> </h1> → heading
+
+Some are self-closing:
+
+<img />, <br />
+
+Example:
+
+<h1>Hello World!</h1>
+<p>This is a paragraph.</p>
+
+🟢 Forms
+
+Forms = way to collect input from users (like login, signup, feedback).
+
+Basic elements:
+
+<input> → text, password, email, etc.
+
+<textarea> → big text box.
+
+<button> → submit or reset.
+
+<select> + <option> → dropdown.
+
+Example:
+
+<form>
+  <input type="text" placeholder="Enter your name">
+  <button>Submit</button>
+</form>
+
+🟢 Tables
+
+Tables = used to arrange data in rows & columns.
+
+Main tags:
+
+<table> → container
+
+<tr> → table row
+
+<td> → table data
+
+<th> → table header (bold + centered by default)
+
+Example:
+
+<table border="1">
+  <tr><th>Name</th><th>Age</th></tr>
+  <tr><td>Vartika</td><td>20</td></tr>
+</table>
+
+🟢 Footer
+
+<footer> is like the bottom section of a page.
+
+Usually contains copyright, contact info, links.
+
+Example:
+
+<footer>
+  <p>© 2025 My Website</p>
+</footer>
+
+ CSS (Cascading Style Sheets)
+
+CSS = makeup & clothes of the webpage → decides how things look.
+
+🟣 Class Selectors
+
+Classes are reusable styles.
+
+Defined with a . in CSS.
+
+Example:
+
+.highlight { color: red; }
+
+<p class="highlight">This is red text</p>
+
+🟣 Specificity
+
+Who wins if two styles fight?
+
+Inline > ID > Class > Tag
+
+Example:
+
+Inline: <p style="color:blue"> → strongest
+
+ID: #idname {}
+
+Class: .classname {}
+
+Tag: p {}
+
+🟣 Pseudo-class
+
+Special states of elements.
+
+Examples:
+
+a:hover { color: green; } → when mouse hovers link
+
+input:focus { border: 2px solid blue; } → when clicking inside textbox
+
+🟣 Border, Padding, Margin
+
+Think of a box model (like packing a gift):
+
+Content → the gift inside.
+
+Padding → bubble wrap around gift (inside the box).
+
+Border → the cardboard box walls.
+
+Margin → space between boxes.
+
+Example:
+
+.box {
+  border: 2px solid black; /* box walls */
+  padding: 10px;           /* inside space */
+  margin: 20px;            /* outside space */
+}
