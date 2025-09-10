@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Grid Calculator UI (Demo)</title>
+<style>
+    .calculator{
+        display: grid;
+        grid-template-columns: repeat(4,minmax(60px,1fr));
+        grid-column: 1/-1;
+        grid-template-rows: minmax(72px, auto) repeat(5, 64px); /* 1 display row + 5 button rows */
+        width:min(400px,95vw);
+        background: linear-gradient(180deg,#11e927,#091827);
+         padding:18px;
+         border-radius:14px;
+            box-shadow: 0 10px 30px rgba(89, 2, 17, 0.6);
+            gap:10px;
+    }
+    .display{
+        width:100%;
+        grid-column: 1 / -1;
+        background-color: yellow;
+        border-top-left-radius: 8%;
+        border-bottom-left-radius: 8%;
+        border-bottom-right-radius: 8%;
+        border-top-right-radius: 8%;
+        text-align: centre;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    div{
+        text-align: center;
+    }
+    body{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    }
+          
+            @keyframes changeColor {
+  0%   { background-color: rgb(88, 130, 107); }
+  50%  { background-color: rgb(118, 160, 129); }
+  100% { background-color: green; }
+}
+
+*{
+ 
+  animation: changeColor 4s infinite;
+}
+.btn{
+    border: none; outline: none;
+    background: var(--btn);
+    color: #e6eef8;
+    font-size: 1.15rem;
+    border-radius:10px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(2,6,23,.45);
+    transition: transform .08s ease, box-shadow .12s ease;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .btn:active{ transform: translateY(2px); box-shadow: 0 2px 6px rgba(2,6,23,.5); }
+
+  .btn.op { background: linear-gradient(180deg,#ef4444,#dc2626); }
+  .btn.equal { background: linear-gradient(180deg,#10b981,#059669); }
+
+  /* Span two columns (e.g., 0) */
+  .span-2 { grid-column: span 2; }
+
+  /* small visual tweaks for clarity */
+  .btn.clear { background: #334155; color: #f8fafc; font-weight:600; }
+
+          
+ 
+
+
+
+
+ 
+ 
+
+
+    .btn{
+        background-color: white;
+    }
+  
+  
+</style>
+</head>
+<body>
+
+
+<div class="calculator" role="application" aria-label="Calculator">
+  <div id="display" class="display" aria-live="polite">0</div>
+
+  <!-- Row 1 -->
+  <button class="btn clear" data-value="C" aria-label="Clear (C)">C</button>
+  <button class="btn" data-value="(" aria-label="Left Parenthesis">(</button>
+  <button class="btn" data-value=")" aria-label="Right Parenthesis">)</button>
+  <button class="btn op" data-value="/" aria-label="Divide">÷</button>
+
+  <!-- Row 2 -->
+  <button class="btn" data-value="7">7</button>
+  <button class="btn" data-value="8">8</button>
+  <button class="btn" data-value="9">9</button>
+  <button class="btn op" data-value="*" aria-label="Multiply">×</button>
+
+  <!-- Row 3 -->
+  <button class="btn" data-value="4">4</button>
+  <button class="btn" data-value="5">5</button>
+  <button class="btn" data-value="6">6</button>
+  <button class="btn op" data-value="-" aria-label="Minus">−</button>
+
+  <!-- Row 4 -->
+  <button class="btn" data-value="1">1</button>
+  <button class="btn" data-value="2">2</button>
+  <button class="btn" data-value="3">3</button>
+  <button class="btn op" data-value="+" aria-label="Plus">+</button>
+
+  <!-- Row 5 -->
+  <button class="btn span-2" data-value="0">0</button>
+  <button class="btn" data-value=".">.</button>
+  <button class="btn equal" data-value="=" aria-label="Equals">=</button>
+</div>
+
+
+ <script>
+  // Basic demo behavior (eval is used here only for the classroom/local demo).
+  // DO NOT eval untrusted input in production.
+  (function(){
+    const display = document.getElementById('display');
+    let expr = '';
+
+    function render(){
+      display.textContent = expr || '0';
+    }
+
+    document.querySelectorAll('.btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const v = btn.dataset.value;
+        if(v === 'C'){ expr = ''; render(); return; }
+        if(v === '='){
+          try {
+            // simple replace for display symbols (optional)
+            // evaluate expression - demo only
+            const result = Function('"use strict";return (' + expr + ')')();
+            expr = String(result);
+          } catch(e) { expr = 'Error'; }
+          render();
+          return;
+        }
+        // append normally (allow parentheses and operators)
+        expr += v;
+        render();
+      });
+    });
+
+    // keyboard support (very basic)
+    window.addEventListener('keydown', (ev) => {
+      if(/[0-9()+\-*/.]/.test(ev.key)) { expr += ev.key; render(); }
+      if(ev.key === 'Enter') { document.querySelector('.btn.equal').click(); }
+      if(ev.key === 'Backspace') { expr = expr.slice(0,-1); render(); }
+      if(ev.key.toLowerCase() === 'c') { expr=''; render(); }
+    });
+  })();
+</script> 
+
+</body>
+</html>
