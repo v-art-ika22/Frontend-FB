@@ -12,7 +12,21 @@ const calculte=(operation, num1,num2,...rest)=>{
         }
         console.log(sub);
         break;
+        case '*':let mul=num1*num2;
+        for(let i=0;i<rest.length;i++){
+            mul*=rest[i];
+        }
+        console.log(mul);
+        break;
+        case '/': let div=num1/num2;
+        for(let i=0;i<rest.length;i++){
+            div/=rest[i];
 
+        }
+        console.log(div);
+        break;
+        default: 
+        console.log("happy diwali");
     }
 };
-calculte('+',1,2,4,5,6,7);
+calculte('+',1,2,5);
