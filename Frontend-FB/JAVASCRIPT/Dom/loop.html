@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chess Board</title>
+
+    <style>
+        .chessboard {
+            width: 480px;
+            height: 480px;
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            border: 3px solid black;
+        }
+
+        .chessboard div {
+            width: 60px;
+            height: 60px;
+        }
+
+     
+        .chessboard div:nth-child(odd) {
+            background: black;
+        }
+        .chessboard div:nth-child(even) {
+            background: white;
+        }
+    </style>
+</head>
+<body>
+
+<div class="chessboard">
+    
+    <script>
+        for(let i = 0; i < 64; i++) {
+            document.write("<div></div>");
+        }
+    </script>
+</div>
+
+</body>
+</html>

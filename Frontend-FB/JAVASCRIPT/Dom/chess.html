@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chess Row</title>
+
+    <style>
+        body{
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+           
+        }
+        .chess-row {
+            display: grid;
+            grid-template-columns: repeat(8, 60px);
+            grid-template-rows: repeat(8,60px);
+            border:solid 5px rgb(184, 10, 10);
+            width:fit-content;
+        }
+
+        .box {
+            width: 60px;
+            height: 60px;
+        }
+
+   
+        .box:nth-child(odd) {
+            background: black;
+        }
+
+        .box:nth-child(even) {
+            background: white;
+        }
+         .box-even:nth-child(even) {
+            background: black;
+        }
+
+        .box-even:nth-child(odd) {
+            background: white;
+        }
+    </style>
+
+</head>
+<body>
+
+<div class="chess-row">
+ 
+    
+</div>
+<script src="chess.js"></script>
+
+</body>
+</html>
