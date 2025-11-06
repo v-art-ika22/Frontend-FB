@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>input add list</title>
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <input type="text" id="display">
+        <button onclick="addList()">add items</button>
+        <ul id="newLi"></ul>
+        <script>
+            const input = document.getElementById("display");
+
+input.addEventListener("keydown", function(event){
+    if(event.key === "Enter"){
+        addList();
+    }
+});
+
+            
+            function addList(){
+                const input= document.querySelector("input");
+                const li = document.getElementById("newLi");
+                
+                if(input.value.trim()!==""){
+                    const list=document.createElement("li");
+                    const span=document.createElement("span");
+                    
+                    
+                    span.textContent=input.value;
+                    list.appendChild(span);
+                    const delButton = document.createElement("button");
+                    delButton.textContent="delete";
+                    delButton.addEventListener("click",function(){
+                        span.remove();
+                        list.remove();
+                    })
+                    const editButton= document.createElement("button");
+                    editButton.textContent="edit";
+                    editButton.addEventListener("click",function(){
+                        const newText=prompt("edit your list item");
+                        if(newText!==null){
+                            span.textContent=newText;
+                        }
+                    })
+                      list.appendChild(editButton);
+                      li.appendChild(list);
+                      list.appendChild(delButton);
+                      li.appendChild(list);
+                      input.value="";
+                 
+                    
+                }
+                
+                
+
+            }
+          
+        </script>
+    </body>
+</html>
