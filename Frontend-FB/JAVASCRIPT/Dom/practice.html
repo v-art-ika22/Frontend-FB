@@ -1,0 +1,108 @@
+<!--<div id="circle" style="
+  width:100px; height:100px;
+  border-radius:50%; background:skyblue;
+  margin:50px auto; transition:0.3s;">
+</div>
+
+<script>
+const cir = document.getElementById("circle");
+cir.addEventListener("mouseover", function(){
+    document.getElementById("circle").style.background="red";
+    cir.style.transform="scale(1.6)";
+})
+cir.addEventListener("mouseout",function(){
+    cir.style.background="skyblue";
+    cir.style.transform="scale(1)";
+})
+cir.addEventListener("click",function(){
+    cir.style.background="purple";
+});
+
+</script>-->
+
+<!--<!DOCTYPE html>
+<html>
+<head>
+<style>
+.snake {
+  position: relative;
+  display: flex;
+  gap: 4px;
+  animation: moveSnake 3s infinite linear;
+}
+
+.snake div {
+  width: 20px;
+  height: 20px;
+  background-color: limegreen;
+  border-radius: 4px;
+}
+
+
+</style>
+</head>
+<body>
+
+<div class="snake">
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+</div>
+<script>
+    const sn = document.getElementsByClassName("snake")[0];
+    let wid =40;
+    document.addEventListener("dblclick",()=>{
+          wid=wid+40;
+          sn.style.width=wid+"px";
+    })
+</script>
+</body>
+</html>-->
+
+<!--<body style="background-color:black">
+<div id="box" style="font-size:80px; top:200px; left:200px;width:150px;height:150px;position:absolute;">🐍</div></body>
+<div style="font-size:50px;margin-left:50%;margin-top:90px;">🍈</div>
+<script>
+    let x=200; let y=200;
+    document.addEventListener("keydown",e=>{
+
+    
+        if(e.key=="ArrowUp")
+            y-=30;
+
+        
+        if(e.key=="ArrowDown")
+            y+=30;
+        
+        if(e.key=="ArrowLeft")
+            x-=30;
+        
+        if(e.key=="ArrowRight")
+            x+=30;
+        document.getElementById("box").style.left=x+"px";
+          document.getElementById("box").style.top=y+"px";
+    });
+  
+</script>-->
+
+
+<div id="outer" style="padding:40px;background:#f88;">
+  Outer
+  <div id="inner" style="padding:40px;background:#8f8;">Inner</div>
+</div>
+
+<script>
+document.getElementById('outer').addEventListener('click', () => alert("Outer bubble"));
+document.getElementById('inner').addEventListener('click', e =>{
+e.stopPropagation();
+alert("Inner bubble only")})
+;
+document.getElementById('outer').addEventListener('click', () => console.log('Outer capture'), true); 
+</script>
+
+
+
+
+
