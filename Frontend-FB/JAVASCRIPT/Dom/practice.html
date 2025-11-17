@@ -113,12 +113,7 @@ document.getElementById('outer').addEventListener('click', () => console.log('Ou
             FORM TO CARD
         </TITLE>
         <STYLE>
-            body{
-                display:flex;
-                justify-content:center;
-                align-items:center;
-                min-height:100vh;
-            }
+            
             .outer{
                 display:flex;
                 align-items:center;
@@ -145,28 +140,107 @@ document.getElementById('outer').addEventListener('click', () => console.log('Ou
             .btn:hover{
                 transform:scale(1.2);
             }
-             
+            .dabba{
+                width:350px;
+                height:350px;
+                background-color:red;
+                border-radius:10px;
+                display:flex;
+                background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+                justify-content:flex-end;
+                font-size:large;
+               
+                flex-direction:column;
+                padding-left:60px;
+                 box-shadow: 0 8px 200px rgba(0, 0, 0, 0.563);
+            }
+            .main-outer{
+                display:flex;
+                align-items:center;
+                justify-content:center;
+                background-color:black;
+                width:400px;
+                height:400px;
+               
+                gap:10px;
+                border-radius:10px;
+            }
+            body{
+                display:flex;
+                align-items:center;
+                justify-content:center;
+                flex-direction:column;
+                min-height:100vh;
+                gap:10px;
+                background-color:white;
+                padding:0;
+                margin:0;
+            }
+            .formation{
+                width:100%;
+                
+                margin-left:50px;
+                display:grid;
+                grid-template-columns:repeat(3,1fr);
+                gap:20px;
+                box-sizing:border-box;
+                
+            }
+            
+            
 
         </STYLE>
     </HEAD>
     <BODY>
+        <div class="main-outer">
         <DIV class="outer">
             <input type="text" id="display" placeholder="enter your first name"><br>
             <input type="text" id="newDisplay" placeholder="enter your second name"><br>
-            <input type="file" accept="image/*">
+            <input type="file" id="image" accept="image/*">
             
 
-            <button class="btn">Submit</button>
-        </DIV>
+            <button onclick="fn()"class="btn">Submit</button>
+        </DIV></div>
+        <div class="formation"></div>
     </BODY>
     <script>
       
-        document.querySelector(".btn").addEventListener("click",()=>{
+        function fn(){
               const first=document.getElementById("display").value;
         const second=document.getElementById("newDisplay").value;
-            const url = 
-            const arr;
-        })
+        const imageInput=document.getElementById("image");
+        if(imageInput.files.length===0||first===""||second===""){
+            alert("please fill all the fields");
+            return;
+        }
+        const imageUrl = URL.createObjectURL(imageInput.files[0]);
+       
+          
+            const box= document.createElement("div");
+            
+            box.classList.add("dabba");
+             box.style.backgroundImage=`url(${imageUrl})`;
+             box.style.backgroundSize = "100% 100%";
+            
+
+
+           document.querySelector(".formation").appendChild(box);
+           const h21=document.createElement("h2");
+           h21.textContent=first;
+           const h22=document.createElement("h2");
+           h22.textContent=second;
+            box.appendChild(h21);
+             box.appendChild(h22);
+             document.getElementById("display").value="";
+             document.getElementById("newDisplay").value="";
+            document.getElementById("image").value="";
+             
+
+             
+            
+        }
         
     </script>
 </HTML>
