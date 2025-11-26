@@ -1,12 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8"/>
-        <meta name="viewport">
-        <title>document</title>
-           
-    </head>
-    <body>
-        <script src="./script.js"></script>
-    </body>
+<head>
+  <meta charset="UTF-8">
+  
+  <title>Basic Calculator</title>
+<style>
+  
+ .outer{
+  width: 250px;       
+  margin: 50px auto;  
+  padding: 20px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+}
+#display{
+  width: 100%;
+  height: 40px;
+  margin-bottom: 15px;
+}
+.numbers{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+button{
+  padding: 10px;
+}
+</style>
+
+</head>
+
+<body>
+ <div class="outer">
+    <input type="text" id="display" >
+    <div class="numbers">
+        <button onclick="add('1')">1</button>
+         <button onclick="add('2')">2</button>
+          <button onclick="add('3')">3</button>
+           <button onclick="add('4')">4</button>
+            <button onclick="add('5')">5</button>
+             <button onclick="add('6')">6</button>
+              <button onclick="add('7')">7</button>
+               <button onclick="add('8')">8</button>
+                <button onclick="add('9')">9</button>
+                 <button onclick="add('0')">0</button>
+                  <button onclick="add('+')">+</button>
+                   <button onclick="add('-')">-</button>
+                    <button onclick="add('x')">x</button>
+                     <button onclick="add('/')">/</button>
+                      <button id="result" onclick="calc()">=</button>
+                       <button id="del">C</button>
+    </div>
+ </div>
+
+</body>
+<script>
+    const data=document.getElementById("display");
+    function add(c){
+        data.value+=c;
+    }
+    function calc(){
+
+    
+       try{
+ data.value=eval(data.value);
+       
+        
+        if(isNaN(data.value)){
+            throw "invalid";
+        }
+        data.value=data.value;
+    }
+    catch{
+        alert("invalid expression");
+        data.value="";
+    }
+
+}
+document.getElementById("del").addEventListener("click",function(){
+    data.value="";
+})
+
+
+</script>
 </html>
