@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            task
+        </title>
+        <style>
+           
+         #newLi{
+            list-style:none;
+         }
+         body{
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            min-height:100vh;
+            flex-direction:column;
+            background:linear-gradient(to right,red,yellow,orange,pink);
+         
+         }
+         .outer{
+            width:500px;
+            height:80px;
+            background:linear-gradient(to right,blue,navy,black);
+         }
+         #display{
+            width:300px;
+            height:30px;
+            
+         }
+         #priority{
+            width:100px;
+            height:30px;
+           
+         }
+         .btn{
+            width:200px;
+            height:30px;
+            border-radius:8px;
+         }
+        </style>
+    </head>
+    <body>
+        <h1>TO DO LIST</h1>
+        <div class="outer">
+            <input type="text" id="display" placeholder="enter items">
+             
+    <select id="priority" onchange="filterItems()">
+        <option value="all">All</option>
+        <option value="high">High</option>
+        <option value="medium">Medium</option>
+        <option value="low">Low</option>
+    </select>
+    <button class="btn" onclick="add()">ADD ITEMS</button>
+        </div>
+        <div>
+            <ul id="newLi"></ul>
+        </div>
+    </body>
+    <script>
+        function add() {
+    const input = document.getElementById("display");
+    const li = document.getElementById("newLi");
+
+    if (input.value.trim() !== "") {
+        const list = document.createElement("li");
+        const span = document.createElement("span");
+
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+             checkbox.addEventListener("change", function () {
+            if (checkbox.checked) {
+                span.style.textDecoration = "line-through";
+            } else {
+                span.style.textDecoration = "none";
+            }
+        });
+
+        span.textContent = input.value;
+
+        const delButton = document.createElement("button");
+        delButton.textContent = "delete";
+
+        delButton.addEventListener("click", function () {
+            list.remove();
+        });
+
+        list.appendChild(checkbox);
+        list.appendChild(span);
+        list.appendChild(delButton);
+
+        li.appendChild(list);
+
+        input.value = "";
+    }
+}
+        
+    </script>
+</html>
