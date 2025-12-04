@@ -9,11 +9,26 @@
     </HEAD>
     <BODY>
         <input id="display" placeholder="enter city">
+        <p id="show"></p>
         <button class="btn">get weather</button>
 
     </BODY>
     <SCRIPT>
+        function give(){
+       const hh = document.getElementById("show");
         
+        fetch("https://api.sampleapis.com/weather/forecast")
+        .then(response=>{
+            return response.json();
+        })
+        .then(data=>{
+            show.textContent=data.weather;
+        })
+        .catch(error=>{
+            show.textContent="error";
+        })
+    }
+    document.querySelector(".btn").addEventListener("click",give);
 
     </SCRIPT>
 </HTML>
