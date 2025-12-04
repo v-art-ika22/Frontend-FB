@@ -84,3 +84,43 @@ document.getElementById("del").addEventListener("click",function(){
 
 </script>
 </html>
+
+
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+  <title>Basic Calculator</title>
+<style>
+    </style>
+    </head>
+    <body>
+        <div class="todo">
+            <input type="text" id="display" placeholder="add your items">
+            <button onclick="add()">Add Items</button>
+            <div class="after">
+           <ul id="listttt"></ul>
+        </div>
+        </div>
+    </body>
+    <script>
+        function add(){
+            const val = document.getElementById("display").value
+            if(val!==""){
+           const newww = document.createElement("li");
+            newww.textContent=document.getElementById("display").value;
+            const btn = document.createElement("button");
+            btn.textContent="Delete";
+            btn.addEventListener("click",function(){
+                newww.remove();
+                btn.remove();
+            })
+            document.getElementById("listttt").appendChild(newww);
+            newww.appendChild(btn);
+
+            document.getElementById("display").value="";
+        }
+    }
+    </script>-->
+  
