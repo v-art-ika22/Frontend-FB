@@ -18,6 +18,14 @@
         </div>
     </body>
     <script>
-        
+        const name= document.getElementById("name");
+        const email = document.getElementById("email");
+        const pass= document.getElementById("Password");
+        if(name.value===""||email.value===""||pass.value===""){
+            document.getElementById("submit").textContent="fill all the fields";
+        }
+        if(!email.value.includes('@')){
+            document
+        }
     </script>
 </html>
