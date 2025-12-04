@@ -22,10 +22,10 @@
             return response.json();
         })
         .then(data=>{
-            show.textContent=data.weather;
+            hh.textContent=data.weather;
         })
         .catch(error=>{
-            show.textContent="error";
+            hh.textContent="error";
         })
     }
     document.querySelector(".btn").addEventListener("click",give);
