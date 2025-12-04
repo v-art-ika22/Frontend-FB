@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<HTML>
+    <HEAD>
+        <TITLE>JOKE</TITLE>
+        <STYLE>
+
+        </STYLE>
+    </HEAD>
+    <BODY>
+        <h1>try to control your laugh</h1>
+        <div class="joke">
+            <p id="setup">setup</p>
+            <p id="ans">punchline</p>
+            <button class="btn"></button>
+        </div>
+    </BODY>
+    <SCRIPT>
+        function get(){
+        const set = document.getElementById("setup");
+        const ans = document.getElementById("ans");
+        fetch( "https://official-joke-api.appspot.com/random_joke").then((response=>{
+            return response.json();
+        }))
+        .then(data=>{
+            set.textContent=data.setup;
+            ans.textContent=data.punchline;
+
+
+        })
+        .catch(error=>{
+            set.textContent="error while fetching";
+            ans.textContent="";
+        })
+    }
+        document.querySelector(".btn").addEventListener("click",get);
+
+
+    </SCRIPT>
+</HTML>
