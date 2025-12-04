@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<HTML>
+    <HEAD>
+        <TITLE>
+
+        </TITLE>
+        <link href="style.css" rel="stylesheet">
+    </HEAD>
+    <body>
+        <h1>Share Your Feedback About Our Frontend Classes</h1>
+       <div class="outer">
+        <textarea id="feedback" placeholder="enter your feedback"></textarea>
+        <p id="charsleft">100 characters left</p>
+    </div>
+        
+
+    </body>
+    <script>
+        const feed = document.getElementById("feedback");
+        const chars = document.getElementById("charsleft");
+        const limit=100;
+        feed.addEventListener("input",show);
+        function show(){
+            if(feed.value.length>limit){
+                feed.value=feed.value.substring(0,limit);
+            }
+            if(feed.value.length>50&&feed.value.length<85){
+                chars.style.color="red";
+            }
+            if(feed.value.length<50&&feed.value.length>20){
+                chars.style.color="yellow";
+            }
+            if(feed.value.length<20){
+                chars.style.color="green";
+            }
+            const left = limit-feed.value.length;
+            chars.textContent=left+" " +"characters left";
+        }
+    </script>
+</HTML>
